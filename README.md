@@ -115,10 +115,8 @@ PhotoMedia-master:android自定义图册,完美解决:
 ```
 3.演示
 ------
-![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p1.jpg)  
-![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p2.jpg)
-![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p3.jpg)
-![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p4.jpg)
+![image](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p1.jpg)![image](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p2.jpg)
+ ![image](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p3.jpg)![image](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p4.jpg)
 联系方式
 ------
 * 邮箱地址： 870931145@qq.com
