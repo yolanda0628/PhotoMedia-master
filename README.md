@@ -66,7 +66,8 @@ PhotoMedia-master:android自定义图册,完美解决:
         //若传入已选中的路径则在选择页面会呈现选中状态
         i.putStringArrayListExtra("pickerPaths", selectedVedioPaths);
         i.putExtra("loadType", PhotoVideoDir.Type.VEDIO.toString());
-        i.putExtra("sizeLimit", 1 * 1024 * 1024);
+        //可以不用传
+        //i.putExtra("sizeLimit", 1 * 1024 * 1024);
         startActivityForResult(i, REQUEST_CODE_GET_VEDIOS);
     }
 ```
