@@ -113,7 +113,10 @@ PhotoMedia-master:android自定义图册,完美解决:
 ```
 3.演示
 ------
-![baidu](http://www.baidu.com/img/bdlogo.gif) 
+![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/Logo/p1.jpg)  
+![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/Logo/p2.jpg)
+![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/Logo/p3.jpg)
+![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/Logo/p4.jpg)
 联系方式
 ------
 
