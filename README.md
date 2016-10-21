@@ -7,7 +7,9 @@ PhotoMedia-master:android自定义图册,完美解决:
 ####(3)多选限制数量.
 ####(4)使用Glide完美加载图片.
 #####该项目参考了:
+
 * https://github.com/jeasonlzy/ImagePicker
+* 后期会根据需求去更新项目。
 * 喜欢原作的可以去使用。同时欢迎大家下载体验本项目，如果使用过程中遇到什么问题，欢迎反馈。
 
 1.用法
@@ -15,7 +17,7 @@ PhotoMedia-master:android自定义图册,完美解决:
 
 使用前,对于android studio用户:<br>
 
-(1)	下载PickerLib.aar资源,并导入项目的lib文件夹下.
+(1)	下载[PickerLib.aar](http://download.csdn.net/detail/kobe_peng/9660032) 资源,并导入项目的lib文件夹下.
 
 (2)	在build.grade中加入
   
@@ -113,11 +115,13 @@ PhotoMedia-master:android自定义图册,完美解决:
 ```
 3.演示
 ------
-![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/Logo/p1.jpg)  
-![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/Logo/p2.jpg)
-![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/Logo/p3.jpg)
-![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/Logo/p4.jpg)
+![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p1.jpg)  
+![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p2.jpg)
+![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p3.jpg)
+![](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p4.jpg)
 联系方式
 ------
+* 邮箱地址： 870931145@qq.com
+* 个人能力也有限，希望一起学习一起进步,非常感谢!
 
 
