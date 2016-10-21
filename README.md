@@ -1,30 +1,49 @@
 PhotoMedia-master
+====
 PhotoMedia-master:android自定义图册,完美解决:
-(1)手机中对图片和视频拍照和录像的功能.
-(2)实现了图片和视频单选和多选功能.
-(3)多选限制数量.
-(4)使用Glide完美加载图片.
-该项目参考了:
-https://github.com/jeasonlzy/ImagePicker
-喜欢原作的可以去使用。同时欢迎大家下载体验本项目，如果使用过程中遇到什么问题，欢迎反馈。
-1.用法
-使用前,对于android studio用户:
-(1)	下载PickerLib.aar资源,并导入项目的lib文件夹下.
-(2)	在build.grade中加入
-   repositories {
-        flatDir {
-            dirs 'libs'
-        }
-}
-(3)	在你需要使用的module中添加
-compile 'com.github.bumptech.glide:glide:3.6.1'//图片加载的依赖
-    compile(name:'PickerLib', ext:'aar')  //依赖aar文件
-当然,你也可以直接依赖library项目:
-compile project(':PickerLib')
-2.代码参考
+--
+####(1)手机中对图片和视频拍照和录像的功能.
+####(2)实现了图片和视频单选和多选功能.
+####(3)多选限制数量.
+####(4)使用Glide完美加载图片.
+#####该项目参考了:
+* https://github.com/jeasonlzy/ImagePicker
+* 喜欢原作的可以去使用。同时欢迎大家下载体验本项目，如果使用过程中遇到什么问题，欢迎反馈。
 
-(1)	在Activity中直接使用图片选择
-/**
+1.用法
+----
+
+使用前,对于android studio用户:<br>
+
+(1)	下载PickerLib.aar资源,并导入项目的lib文件夹下.
+
+(2)	在build.grade中加入
+  
+  ```java
+  repositories {
+  flatDir {
+  dirs 'libs'
+  }
+  }
+  ```
+  
+(3)	在你需要使用的module中添加<br>
+
+```java
+  compile 'com.github.bumptech.glide:glide:3.6.1'//图片加载的依赖
+  compile(name:'PickerLib', ext:'aar')  //依赖aar文件
+  ```
+  
+当然,你也可以直接依赖library项目:<br>
+
+```java
+  compile project(':PickerLib')
+  ```
+2.代码参考
+------
+###(1)在Activity中直接使用图片选择和视频选择
+```java
+     /**
      * 照片选择
      *
      * @param view
@@ -35,8 +54,7 @@ compile project(':PickerLib')
         i.putStringArrayListExtra("pickerPaths", selectedImagesPaths);
         startActivityForResult(i, REQUEST_CODE_GET_PHOTOS);
     }
-(2)	视频选择
-/**
+    /**
      * 视频选择
      *
      * @param view
@@ -49,8 +67,11 @@ compile project(':PickerLib')
         i.putExtra("sizeLimit", 1 * 1024 * 1024);
         startActivityForResult(i, REQUEST_CODE_GET_VEDIOS);
     }
-(3)	重写onActivityResult方法,回调结果
- 	@Override
+```
+
+###(2)重写onActivityResult方法,回调结果
+```java
+   @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             //照相选择返回事件
@@ -89,5 +110,11 @@ compile project(':PickerLib')
                 break;
         }
     }
+```
 3.演示
-阿
+------
+![baidu](http://www.baidu.com/img/bdlogo.gif) 
+联系方式
+------
+
+
