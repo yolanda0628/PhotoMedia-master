@@ -3,12 +3,14 @@ package com.pbq.pickerlib.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.media.ThumbnailUtils;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -90,6 +92,7 @@ public class PhotoMediaAdapter extends BaseAdapter {
 
 		if (position == 0) {
             //第一个显示相机
+			viewHolder.photoView.setBackgroundColor(Color.parseColor("#cc22292c"));
 			viewHolder.photoView.setImageResource(R.mipmap.grid_camera);
 			viewHolder.photoView.setScaleType(ScaleType.CENTER_INSIDE);
 			viewHolder.chSelect.setVisibility(View.GONE);
