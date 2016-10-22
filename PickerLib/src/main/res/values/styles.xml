@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="PickerTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="PickerThemeFullScreen" parent="PickerTheme">
+        <item name="android:fitsSystemWindows">false</item>
+    </style>
+</resources>
