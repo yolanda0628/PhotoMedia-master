@@ -6,7 +6,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true">
         <activity android:name=".PhotoMediaActivity"
-            android:theme="@style/PickerTheme"/>
+            android:theme="@style/PickerThemeFullScreen"/>
 
     </application>
 
