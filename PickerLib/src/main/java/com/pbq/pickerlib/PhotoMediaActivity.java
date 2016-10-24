@@ -33,9 +33,17 @@ import java.util.HashMap;
  */
 public class PhotoMediaActivity extends AppCompatActivity{
     /**
-     * 通过键值对存储图片或视频的路径
+     * 在视频选择中录像的请求码
      */
-    private HashMap<String, PhotoVideoDir> dirMap = new HashMap<String, PhotoVideoDir>();
+    public static final int REQUEST_CODE_CAMERA = 1;
+    /**
+     * 在图片选择中拍照的请求码
+     */
+    public static final int REQUEST_CODE_VEDIO = 2;
+    /**
+     * 在图片选择点击后请求码
+     */
+    public static final int REQUEST_CODE_IMAGE_SWITCHER = 3;
     /**
      * 显示系统图片的视图
      */
@@ -62,23 +70,15 @@ public class PhotoMediaActivity extends AppCompatActivity{
     Button btnNext;
     int maxPicSize;
     /**
+     * 通过键值对存储图片或视频的路径
+     * String 为包含所有的文件名称
+     */
+    private HashMap<String, PhotoVideoDir> dirMap = new HashMap<String, PhotoVideoDir>();
+    /**
      * 记录图片的最大选择
      */
     private int maxCount = 9;
-
     private File cameraFile;
-    /**
-     * 在视频选择中录像的请求码
-     */
-    public static final int REQUEST_CODE_CAMERA = 1;
-    /**
-     * 在图片选择中拍照的请求码
-     */
-    public static final int REQUEST_CODE_VEDIO = 2;
-    /**
-     * 在图片选择点击后请求码
-     */
-    public static final int REQUEST_CODE_IMAGE_SWITCHER = 3;
     private ArrayList<String> selectedFath;
     /**
      * 上传大小
@@ -92,6 +92,7 @@ public class PhotoMediaActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.photo_media_activity);
         initData();
         init();
@@ -372,6 +373,8 @@ public class PhotoMediaActivity extends AppCompatActivity{
         int count = 0;
         for (String name : dirMap.keySet()) {
             count += dirMap.get(name).selectedFiles.size();
+            Log.i("pbq", "name==" + name);
+            Log.i("pbq", "dirMap.keySet()==" + dirMap.keySet());
         }
 
         return count;
