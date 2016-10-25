@@ -17,7 +17,7 @@ PhotoMedia-master:android自定义图册,完美解决:
 
 使用前,对于android studio用户:<br>
 
-(1)	下载[PickerLib.aar](http://download.csdn.net/detail/kobe_peng/9660032) 资源,并导入项目的lib文件夹下.
+(1)	下载[PickerLib.aar](http://download.csdn.net/detail/kobe_peng/9663683) 资源,并导入项目的lib文件夹下.
 
 (2)	在build.grade中加入
   
