@@ -17,6 +17,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.pbq.pickerlib.R;
@@ -79,7 +80,7 @@ public class PhotoMediaAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
-		ViewHodler viewHolder;
+		final ViewHodler viewHolder;
 		if (convertView == null) {
 			convertView = inflator.inflate(R.layout.grid_item_photo, null);
 			viewHolder = new ViewHodler();
@@ -92,7 +93,7 @@ public class PhotoMediaAdapter extends BaseAdapter {
 
 		if (position == 0) {
             //第一个显示相机
-			viewHolder.photoView.setBackgroundColor(Color.parseColor("#cc22292c"));
+			viewHolder.photoView.setBackgroundColor(Color.WHITE);
 			viewHolder.photoView.setImageResource(R.mipmap.grid_camera);
 			viewHolder.photoView.setScaleType(ScaleType.CENTER_INSIDE);
 			viewHolder.chSelect.setVisibility(View.GONE);

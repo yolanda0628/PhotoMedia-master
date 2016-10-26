@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.GridView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -115,7 +116,7 @@ public class PhotoMediaActivity extends AppCompatActivity{
         }
         //传入到ImageFolderPopWindow构造方法中 loadType 加载的类型（图片或视频）
         popDir = new ImageFolderPopWindow(this,
-                PhoneInfoUtil.getScreenWidth(this),PhoneInfoUtil.getScreenHeight(this) / 2);
+                PhoneInfoUtil.getScreenWidth(this),PhoneInfoUtil.getScreenHeight(this) *2/ 3);
         //设置外部可触摸
         popDir.setOutsideTouchable(true);
         popDir.setOnDismissListener(new PopupWindow.OnDismissListener() {
@@ -270,7 +271,7 @@ public class PhotoMediaActivity extends AppCompatActivity{
         return imageDir;
     }
     /**
-     * 加载图片
+     * 加载文件夹的图片路径
      *
      * @param imageDir 图片路径实体
      */

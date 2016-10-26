@@ -1,20 +1,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#646464"
+    android:background="#fff"
     android:paddingBottom="2dp"
     android:paddingTop="2dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#111111">
+        android:background="#fff">
 
         <RelativeLayout
             android:id="@+id/ly_top_bar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#242424">
+            android:background="#fff">
 
             <TextView
                 android:layout_width="50dp"
@@ -24,7 +24,7 @@
                 android:gravity="center"
                 android:onClick="goBack"
                 android:text="取消"
-                android:textColor="#fff"
+                android:textColor="#e9000000"
                 android:textSize="18sp" />
 
             <TextView
@@ -36,8 +36,8 @@
                 android:drawableRight="@drawable/arrow_selector"
                 android:gravity="center"
                 android:onClick="popImageDir"
-                android:text="选择"
-                android:textColor="#fff"
+                android:text="相机胶卷"
+                android:textColor="#db000000"
                 android:textSize="18sp" />
 
             <Button
@@ -47,20 +47,21 @@
                 android:layout_alignParentRight="true"
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_selector"
-                android:onClick="goNext"
                 android:padding="3dp"
+                android:onClick="goNext"
                 android:text="下一步"
-                android:textColor="#000" />
+                android:textColor="#4d000000" />
         </RelativeLayout>
 
         <GridView
+            android:background="#1e000000"
             android:id="@+id/gv_photos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/ly_top_bar"
             android:clipToPadding="false"
             android:horizontalSpacing="2dp"
-            android:listSelector="@android:color/transparent"
+            android:listSelector="#fa000000"
             android:numColumns="3"
             android:padding="2dp"
             android:stretchMode="columnWidth"

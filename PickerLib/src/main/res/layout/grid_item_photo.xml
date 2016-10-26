@@ -5,7 +5,7 @@
 
     <ImageView android:id="@+id/img_photo"
         android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_height="130dp"
         android:scaleType="centerCrop"
         android:src="@mipmap/default_image"
         />
