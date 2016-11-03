@@ -8,16 +8,16 @@
         android:layout_height="50dp"
         android:background="#FFFFFF"
         >
-        <ImageButton
-            android:id="@+id/ib_cancel"
+        <TextView
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:src="@mipmap/cancel"
-            android:layout_marginLeft="5dp"
-            android:background="@null"
+            android:layout_marginLeft="16dp"
+            android:clickable="true"
             android:gravity="center"
             android:onClick="goBack"
-            />
+            android:text="取消"
+            android:textColor="#e9000000"
+            android:textSize="18sp" />
         <TextView
             android:id="@+id/tv_top_bar_title"
             android:layout_width="wrap_content"

@@ -29,7 +29,7 @@ dependencies {
 }
 
 //版本
-version = "1.1.0"
+version = "1.1.1"
 
 // 定义两个链接，下面会用到。
 def siteUrl = 'https://github.com/pbq18785109289/PhotoMedia-master' // 项目主页。

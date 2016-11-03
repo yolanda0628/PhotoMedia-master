@@ -22,4 +22,5 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <!-- 录制视频/音频权限 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.RECORD_VIDEO"/>
 </manifest>

@@ -45,7 +45,6 @@ public class PhotoPreviewActivity extends AppCompatActivity {
     FrameLayout mFrameLayout;
     TextView mTvTitle;
     Button mBtnNext;
-    ImageButton mIbCancel;
     ImagePreviewFragment fragment;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,7 +76,6 @@ public class PhotoPreviewActivity extends AppCompatActivity {
         mFrameLayout=(FrameLayout) findViewById(R.id.img_preview);
         mTvTitle=(TextView) findViewById(R.id.tv_top_bar_title);
         mBtnNext=(Button) findViewById(R.id.btn_next);
-        mIbCancel=(ImageButton) findViewById(R.id.ib_cancel);
         fragment=new ImagePreviewFragment();
         Bundle bundle=getIntent().getBundleExtra("params");
         fragment.setArguments(bundle);

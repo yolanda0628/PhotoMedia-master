@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void choosePhoto(View view) {
         Intent i = new Intent(this, PhotoMediaActivity.class);
-        //若传入已选中的路径则在选择页面会呈现选中状态
-        i.putStringArrayListExtra("pickerPaths", selectedImagesPaths);
+//        //若传入已选中的路径则在选择页面会呈现选中状态
+//        i.putStringArrayListExtra("pickerPaths", selectedImagesPaths);
         startActivityForResult(i, REQUEST_CODE_GET_PHOTOS);
     }
     /**
@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void chooseVideo(View view) {
         Intent i = new Intent(this, PhotoMediaActivity.class);
-        //若传入已选中的路径则在选择页面会呈现选中状态
-        i.putStringArrayListExtra("pickerPaths", selectedVedioPaths);
+//        //若传入已选中的路径则在选择页面会呈现选中状态
+//        i.putStringArrayListExtra("pickerPaths", selectedVedioPaths);
         i.putExtra("loadType", PhotoVideoDir.Type.VEDIO.toString());
         startActivityForResult(i, REQUEST_CODE_GET_VEDIOS);
     }

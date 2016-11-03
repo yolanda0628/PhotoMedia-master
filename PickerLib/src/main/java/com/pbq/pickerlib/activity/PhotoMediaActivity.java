@@ -313,8 +313,6 @@ public class PhotoMediaActivity extends AppCompatActivity {
         PhotoMediaAdapter adapter = new PhotoMediaAdapter(PhotoMediaActivity.this, imageDir, loadType);
         gvPhotos.setAdapter(adapter);
 
-//        BitmapUtils bitmapUtils = new BitmapUtils(this);
-//        gvPhotos.setOnScrollListener(new PauseOnScrollListener(bitmapUtils, false, true));
         //视频选择事件
         adapter.setOnItemCheckdedChangedListener(new PhotoMediaAdapter.onItemCheckedChangedListener() {
 
