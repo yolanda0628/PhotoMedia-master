@@ -106,7 +106,7 @@ PhotoMedia-master:android自定义图册,完美解决:
 * QQ： 870931145
 * 个人能力有限，希望大家一起学习一起进步,非常感谢!
 
-[我的博客..](https://github.com/pbq18785109289/PhotoMedia-master)
+[我的博客..](http://blog.csdn.net/kobe_peng/article/details/52925337)
 -----
 
 
