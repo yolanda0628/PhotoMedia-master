@@ -2,10 +2,16 @@
 <resources>
 
     <style name="PickerTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:fitsSystemWindows">true</item>
+        <!--<item name="android:fitsSystemWindows">true</item>-->
+
+        <item name="colorPrimary">#fff</item>
+        <item name="colorPrimaryDark">#fff</item>
+        <item name="colorAccent">#FF4081</item>
     </style>
 
-    <style name="PickerThemeFullScreen" parent="PickerTheme">
-        <item name="android:fitsSystemWindows">false</item>
+    <!-- PopupWindow弹出/隐藏动画 -->
+    <style name="MyPopupWindow_anim_style">
+        <item name="android:windowEnterAnimation">@anim/popupwindow_show_anim</item>
+        <item name="android:windowExitAnimation">@anim/popupwindow_hidden_anim</item>
     </style>
 </resources>

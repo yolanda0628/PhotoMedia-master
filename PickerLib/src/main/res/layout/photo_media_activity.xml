@@ -1,14 +1,13 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    android:paddingBottom="2dp"
     android:paddingTop="2dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#fff">
+        android:background="#0d000000">
 
         <RelativeLayout
             android:id="@+id/ly_top_bar"
@@ -47,14 +46,12 @@
                 android:layout_alignParentRight="true"
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_selector"
-                android:padding="3dp"
                 android:onClick="goNext"
                 android:text="下一步"
                 android:textColor="#4d000000" />
         </RelativeLayout>
 
         <GridView
-            android:background="#1e000000"
             android:id="@+id/gv_photos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -66,6 +63,39 @@
             android:padding="2dp"
             android:stretchMode="columnWidth"
             android:verticalSpacing="2dp"></GridView>
+
+        <LinearLayout
+            android:id="@+id/footer_bar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:background="#FAFAFA">
+
+            <Button
+                android:background="@drawable/btn_selector"
+                android:layout_width="55dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="预览"
+                android:textAllCaps="false"
+                android:textColor="#4d000000"
+                android:textSize="13sp"/>
+
+            <Button
+                android:background="@drawable/btn_selector"
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:text="原图"
+                android:textAllCaps="false"
+                android:textColor="#c2000000"
+                android:textSize="13sp"/>
+
+        </LinearLayout>
     </RelativeLayout>
 
-</RelativeLayout>
+</LinearLayout>

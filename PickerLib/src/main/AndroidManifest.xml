@@ -5,8 +5,10 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
-        <activity android:name=".PhotoMediaActivity"
-            android:theme="@style/PickerThemeFullScreen"/>
+        <activity android:name=".activity.PhotoMediaActivity"
+            android:theme="@style/PickerTheme"/>
+        <activity android:name=".activity.PhotoPreviewActivity"
+            android:theme="@style/PickerTheme"/>
 
     </application>
 
@@ -18,4 +20,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <!-- 相机权限 -->
     <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- 录制视频/音频权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 </manifest>

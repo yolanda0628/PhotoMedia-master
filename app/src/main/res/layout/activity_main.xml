@@ -1,44 +1,39 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="2dp"
-    android:paddingLeft="2dp"
-    android:paddingRight="2dp"
-    android:paddingTop="2dp"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_take_photo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="拍照"
-        android:layout_margin="16dp"
-        android:onClick="takePhoto"/>
+        <com.pbq.selector.ExpandGridView
+            android:id="@+id/gv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:horizontalSpacing="3dp"
+            android:numColumns="3"
+            android:verticalSpacing="3dp"/>
+        <Button
+            android:id="@+id/btn_choose_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="照片选择"
+            android:onClick="choosePhoto"/>
 
-    <Button
-        android:id="@+id/btn_choose_photo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="照片选择"
-        android:layout_margin="16dp"
-        android:onClick="choosePhoto"/>
+        <Button
+            android:id="@+id/btn_choose_vedio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="视频选择"
+            android:onClick="chooseVideo" />
 
-    <Button
-        android:id="@+id/btn_take_vedio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="录像"
-        android:layout_margin="16dp"
-        android:onClick="takeVideo" />
+        <Button
+            android:id="@+id/btn_choose_audio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="音频选择"
+            android:onClick="chooseAudio" />
 
-    <Button
-        android:id="@+id/btn_choose_vedio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="视频选择"
-        android:layout_margin="16dp"
-        android:onClick="chooseVideo" />
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

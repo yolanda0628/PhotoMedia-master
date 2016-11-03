@@ -10,14 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.pbq.pickerlib.R;
@@ -27,28 +25,29 @@ import com.pbq.pickerlib.entity.PhotoVideoDir;
  * 图片显示适配器
  */
 public class PhotoMediaAdapter extends BaseAdapter {
-    /**
-     * 图片路径实体
-     */
+	/**
+	 * 图片路径实体
+	 */
 	PhotoVideoDir imageDir;
-    /**
-     * 上下文
-     */
+	/**
+	 * 上下文
+	 */
 	Context context;
-    /**
-     * 反射器
-     */
+	/**
+	 * 反射器
+	 */
 	LayoutInflater inflator;
-    /**
-     * 点击事件监听
-     */
+	PhotoVideoDir.Type loadType;
+	/**
+	 * 点击事件监听
+	 */
 	onItemCheckedChangedListener itemCheckListener;
-    //定义选择事件接口
+	//定义选择事件接口
 	public interface onItemCheckedChangedListener {
 		public void onItemCheckChanged(CompoundButton chBox, boolean isCheced, PhotoVideoDir iamgeDir, String path);
-        //照相
+		//照相
 		public void onTakePicture(PhotoVideoDir imageDir);
-        //显示图片
+		//显示图片
 		public void onShowPicture(String path);
 	}
 
@@ -56,13 +55,14 @@ public class PhotoMediaAdapter extends BaseAdapter {
 		this.itemCheckListener = listener;
 	}
 
-	public PhotoMediaAdapter(Activity context, PhotoVideoDir imageDir) {
+	public PhotoMediaAdapter(Activity context, PhotoVideoDir imageDir, PhotoVideoDir.Type loadType) {
 		this.imageDir = imageDir;
 		this.context = context;
+		this.loadType=loadType;
 		this.inflator = LayoutInflater.from(context);
 	}
 
-    //加1  因为第一个显示的是相机
+	//加1  因为第一个显示的是相机
 	@Override
 	public int getCount() {
 		return imageDir.getFiles().size() + 1;
@@ -92,9 +92,13 @@ public class PhotoMediaAdapter extends BaseAdapter {
 		}
 
 		if (position == 0) {
-            //第一个显示相机
+			if(loadType == PhotoVideoDir.Type.IMAGE){
+				viewHolder.photoView.setImageResource(R.mipmap.photo_camera);
+			}else {
+				viewHolder.photoView.setImageResource(R.mipmap.vedio_camera);
+			}
+			//第一个显示相机
 			viewHolder.photoView.setBackgroundColor(Color.WHITE);
-			viewHolder.photoView.setImageResource(R.mipmap.grid_camera);
 			viewHolder.photoView.setScaleType(ScaleType.CENTER_INSIDE);
 			viewHolder.chSelect.setVisibility(View.GONE);
 		} else {
@@ -104,7 +108,7 @@ public class PhotoMediaAdapter extends BaseAdapter {
 			String path = getItem(position - 1);
 			viewHolder.chSelect.setOnCheckedChangeListener(null);
 			viewHolder.chSelect.setChecked(imageDir.selectedFiles.contains(path));
-            //复选框的选择事件，在PhotoSelectorActivity中实现
+			//复选框的选择事件，在PhotoSelectorActivity中实现
 			viewHolder.chSelect.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 				@Override
@@ -116,9 +120,9 @@ public class PhotoMediaAdapter extends BaseAdapter {
 			if (imageDir.getType() == PhotoVideoDir.Type.VEDIO) {
 				viewHolder.photoView.setImageBitmap(ThumbnailUtils.createVideoThumbnail(path, MediaStore.Video.Thumbnails.MINI_KIND));
 			} else {
-                //减1 因为第一个显示的是相机  getItem(position - 1)表示当前位置显示的图片路径
+				//减1 因为第一个显示的是相机  getItem(position - 1)表示当前位置显示的图片路径
 				Glide.with(context).load(getItem(position - 1)).placeholder(R.mipmap.default_image).into(viewHolder.photoView);
-            }
+			}
 
 		}
 
