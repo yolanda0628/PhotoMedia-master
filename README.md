@@ -4,8 +4,9 @@ PhotoMedia-master:android自定义图册,完美解决:
 --
 ####(1)手机中对图片和视频拍照和录像的功能.
 ####(2)实现了图片和视频单选和多选功能.
-####(3)多选限制数量.
-####(4)使用Glide完美加载图片.
+####(3)实现了图片和视频预览功能.
+####(4)多选限制数量.
+####(5)使用Glide完美加载图片.
 #####该项目参考了:
 
 * https://github.com/jeasonlzy/ImagePicker
@@ -15,25 +16,12 @@ PhotoMedia-master:android自定义图册,完美解决:
 1.用法
 ----
 
-使用前,对于android studio用户:<br>
-
-(1)	下载[PickerLib.aar](http://download.csdn.net/detail/kobe_peng/9663683) 资源,并导入项目的lib文件夹下.
-
-(2)	在build.grade中加入
-  
-  ```java
-  repositories {
-  flatDir {
-  dirs 'libs'
-  }
-  }
-  ```
-  
-(3)	在你需要使用的module中添加<br>
+使用前,对于android studio用户可以添加依赖:<br>
 
 ```java
-  compile 'com.github.bumptech.glide:glide:3.6.1'//图片加载的依赖
-  compile(name:'PickerLib', ext:'aar')  //依赖aar文件
+  compile 'com.pbq:PickerLib:1.1.0'//指定版本
+  或
+  compile 'com.pbq:PickerLib:+'  //最新版本
   ```
   
 当然,你也可以直接依赖library项目:<br>
@@ -52,8 +40,6 @@ PhotoMedia-master:android自定义图册,完美解决:
      */
     public void choosePhoto(View view) {
         Intent i = new Intent(this, PhotoMediaActivity.class);
-        //若传入已选中的路径则在选择页面会呈现选中状态
-        i.putStringArrayListExtra("pickerPaths", selectedImagesPaths);
         startActivityForResult(i, REQUEST_CODE_GET_PHOTOS);
     }
     /**
@@ -63,11 +49,7 @@ PhotoMedia-master:android自定义图册,完美解决:
      */
     public void chooseVideo(View view) {
         Intent i = new Intent(this, PhotoMediaActivity.class);
-        //若传入已选中的路径则在选择页面会呈现选中状态
-        i.putStringArrayListExtra("pickerPaths", selectedVedioPaths);
         i.putExtra("loadType", PhotoVideoDir.Type.VEDIO.toString());
-        //可以不用传
-        //i.putExtra("sizeLimit", 1 * 1024 * 1024);
         startActivityForResult(i, REQUEST_CODE_GET_VEDIOS);
     }
 ```
@@ -116,8 +98,8 @@ PhotoMedia-master:android自定义图册,完美解决:
 ```
 3.演示
 ------
-![image](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p1.jpg)![image](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p2.jpg)
- ![image](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p3.jpg)![image](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/p4.jpg)
+![image](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/photo.gif)![image](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/media.gif)
+ ![image](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/take1.gif)![image](https://github.com/pbq18785109289/PhotoMedia-master/raw/master/logos/take2.gif)
 联系方式
 ------
 * 邮箱地址： 870931145@qq.com
