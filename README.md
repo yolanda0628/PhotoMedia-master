@@ -19,7 +19,7 @@ PhotoMedia-master:android自定义图册,完美解决:
 使用前,对于android studio用户可以添加依赖:<br>
 
 ```java
-  compile 'com.pbq:PickerLib:1.1.0'//指定版本
+  compile 'com.pbq:PickerLib:1.1.1'//指定版本
   或
   compile 'com.pbq:PickerLib:+'  //最新版本
   ```
