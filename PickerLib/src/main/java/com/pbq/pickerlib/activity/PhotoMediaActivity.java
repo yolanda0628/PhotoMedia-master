@@ -2,9 +2,12 @@ package com.pbq.pickerlib.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +25,7 @@ import com.pbq.pickerlib.R;
 import com.pbq.pickerlib.adapter.PhotoMediaAdapter;
 import com.pbq.pickerlib.entity.PhotoVideoDir;
 import com.pbq.pickerlib.util.PhoneInfoUtil;
+import com.pbq.pickerlib.util.PictureUtil;
 import com.pbq.pickerlib.view.ImageFolderPopWindow;
 
 import java.io.File;
@@ -81,6 +85,10 @@ public class PhotoMediaActivity extends AppCompatActivity {
     private int maxCount = 9;
     private File cameraFile;
     private ArrayList<String> selectedFath=new ArrayList<>();
+    /**
+     * 存储已选择的路径文件集合
+     */
+    private ArrayList<File> files=new ArrayList<>();
     /**
      * 上传类型
      */
@@ -356,8 +364,8 @@ public class PhotoMediaActivity extends AppCompatActivity {
         ArrayList<String> paths = new ArrayList<String>();
         for (String name : dirMap.keySet()) {
             paths.addAll(dirMap.get(name).selectedFiles);
-        }
 
+        }
         return paths;
     }
     /**
@@ -368,8 +376,6 @@ public class PhotoMediaActivity extends AppCompatActivity {
         int count = 0;
         for (String name : dirMap.keySet()) {
             count += dirMap.get(name).selectedFiles.size();
-            Log.i("pbq", "name==" + name);
-            Log.i("pbq", "dirMap.keySet()==" + dirMap.keySet());
         }
 
         return count;
@@ -476,8 +482,23 @@ public class PhotoMediaActivity extends AppCompatActivity {
     public void goNext(View view) {
         if(getSelectedPictureCont()!=0){
             Intent intent = new Intent();
-            //传入图片选择路径的集合
-            intent.putExtra("pickerPaths", getSelectedPicture());
+            if(loadType== PhotoVideoDir.Type.IMAGE){
+                for (int i=0;i<getSelectedPicture().size();i++){
+                    String targetPath = Environment.getExternalStorageDirectory()+"/Temp/compressPic"+i+".jpg";
+                    File f=new File(targetPath);
+                    if(!f.exists()){
+                        f.mkdir();
+                    }
+                    final String compressImage = PictureUtil.compressImage(getSelectedPicture().get(i), targetPath, 30);
+                    final File compressedPic = new File(compressImage);
+                    files.add(compressedPic);
+                }
+                //传入图片选择路径的集合
+                intent.putExtra("files", files);
+            }else if(loadType== PhotoVideoDir.Type.VEDIO){
+                //传入视频选择路径的集合
+                intent.putExtra("pickerPaths", getSelectedPicture());
+            }
             //返回成功给DemoActivity界面
             setResult(RESULT_OK, intent);
             finish();

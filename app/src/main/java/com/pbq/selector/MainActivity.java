@@ -1,6 +1,8 @@
 package com.pbq.selector;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -83,7 +85,15 @@ public class MainActivity extends AppCompatActivity {
             case REQUEST_CODE_GET_PHOTOS:
                 if (resultCode == RESULT_OK) {
                     //取出选择的相片路径
-                    selectedImagesPaths = data.getStringArrayListExtra("pickerPaths");
+                    files = (ArrayList<File>) data.getSerializableExtra("files");
+                    for(int i=0;i<files.size();i++){
+                        selectedImagesPaths.add(files.get(i).getPath());
+                        Bitmap bmp = BitmapFactory.decodeFile(files.get(i).getPath());
+                        Log.i("zll",i+"图片=="+files.get(i).getPath());
+                        Log.i("zll",i+"宽=="+bmp.getWidth());
+                        Log.i("zll",i+"高=="+bmp.getHeight());
+                    }
+
                     MyAdapter adapter = new MyAdapter(selectedImagesPaths);
                     gv.setAdapter(adapter);
                     //将选择的图片路径放入文件中
