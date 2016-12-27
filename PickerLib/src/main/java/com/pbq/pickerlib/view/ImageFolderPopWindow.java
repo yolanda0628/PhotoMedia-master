@@ -29,13 +29,18 @@ public class ImageFolderPopWindow extends PopupWindow {
     LayoutInflater inflaotor;
     ListView lvDir;
     Context context;
-
     public OnClickListener onItemClickListner;
 
     public void setOnPopClickListener(OnClickListener listener){
         onItemClickListner=listener;
     }
 
+    /**
+     * 构造函数
+     * @param context 上下文
+     * @param width 宽度
+     * @param height 高度
+     */
     public ImageFolderPopWindow(Context context, int width, int height) {
         inflaotor = LayoutInflater.from(context);
         setContentView(initView());

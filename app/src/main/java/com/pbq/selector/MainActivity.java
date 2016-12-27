@@ -39,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
      * 常量，标识录像选择请求码
      */
     private static final int REQUEST_CODE_GET_VEDIOS = 2000;
+    /**
+     * 常量，标识录像选择请求码
+     */
+    private static final int REQUEST_CODE_GET_AUDIOS = 3000;
     private ExpandGridView gv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +67,15 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void chooseAudio(View view) {
-        Toast.makeText(getApplicationContext(),"后期加入选择音频.....",Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this, PhotoMediaActivity.class);
+//        //若传入已选中的路径则在选择页面会呈现选中状态
+//        i.putStringArrayListExtra("pickerPaths", selectedVedioPaths);
+        i.putExtra("loadType", PhotoVideoDir.Type.AUDIO.toString());
+        startActivityForResult(i, REQUEST_CODE_GET_AUDIOS);
+//        Toast.makeText(getApplicationContext(),"后期加入选择音频.....",Toast.LENGTH_SHORT).show();
     }
     /**
      * 视频选择
-     *
      * @param view
      */
     public void chooseVideo(View view) {
@@ -89,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                     for(int i=0;i<files.size();i++){
                         selectedImagesPaths.add(files.get(i).getPath());
                         Bitmap bmp = BitmapFactory.decodeFile(files.get(i).getPath());
+                        Log.i("zll",i+"文件的大小=="+getFileSize(files.get(i)));
                         Log.i("zll",i+"图片=="+files.get(i).getPath());
                         Log.i("zll",i+"宽=="+bmp.getWidth());
                         Log.i("zll",i+"高=="+bmp.getHeight());
@@ -112,7 +121,8 @@ public class MainActivity extends AppCompatActivity {
             //录像选择返回事件
             case REQUEST_CODE_GET_VEDIOS:
                 if (resultCode == RESULT_OK) {
-                    selectedVedioPaths = data.getStringArrayListExtra("pickerPaths");
+                    //取出选择的相片路径
+                    selectedVedioPaths = (ArrayList<String>) data.getSerializableExtra("vediopath");
                     MyAdapter adapter = new MyAdapter(selectedVedioPaths);
                     gv.setAdapter(adapter);
                     //将选择的视频路径放入文件中
@@ -128,6 +138,19 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),selectedVedioPaths+"",Toast.LENGTH_SHORT).show();
                 }
                 break;
+        }
+    }
+
+    /**
+     * 获取文件的大小
+     * @return
+     */
+    private String getFileSize(File f) {
+        if (!f.exists()) {
+            return "0 MB";
+        } else {
+            long size = f.length();
+            return (size / 1024f) / 1024f + "MB";
         }
     }
 

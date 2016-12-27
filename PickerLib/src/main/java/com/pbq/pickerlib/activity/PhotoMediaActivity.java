@@ -2,8 +2,6 @@ package com.pbq.pickerlib.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,14 +18,12 @@ import android.widget.GridView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.pbq.pickerlib.R;
 import com.pbq.pickerlib.adapter.PhotoMediaAdapter;
 import com.pbq.pickerlib.entity.PhotoVideoDir;
 import com.pbq.pickerlib.util.PhoneInfoUtil;
 import com.pbq.pickerlib.util.PictureUtil;
 import com.pbq.pickerlib.view.ImageFolderPopWindow;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -86,14 +82,17 @@ public class PhotoMediaActivity extends AppCompatActivity {
     private File cameraFile;
     private ArrayList<String> selectedFath=new ArrayList<>();
     /**
-     * 存储已选择的路径文件集合
+     * 存储已选择的图片路径文件集合
      */
-    private ArrayList<File> files=new ArrayList<>();
+    private ArrayList<File> picFiles=new ArrayList<>();
+    /**
+     * 存储已选择的视频路径文件集合
+     */
+    private ArrayList<File> vedioFiles=new ArrayList<>();
     /**
      * 上传类型
      */
     private PhotoVideoDir.Type loadType = PhotoVideoDir.Type.IMAGE;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,7 +113,6 @@ public class PhotoMediaActivity extends AppCompatActivity {
         if(isImageType()){
             loadImagesList();
         }
-
         if(isVedioType()){
             loadVediosList();
         }
@@ -152,11 +150,15 @@ public class PhotoMediaActivity extends AppCompatActivity {
         //接收从demo中传来的图片选择和录像选择路径
 //        selectedFath = getIntent().getStringArrayListExtra("pickerPaths");
         //判断是否存在loadType和sizeLimit，如果有，取出值
-        if (getIntent().hasExtra("loadType")) {
-            loadType = PhotoVideoDir.Type.valueOf(getIntent().getStringExtra("loadType"));
+        if(getIntent()!=null){
+            if (getIntent().hasExtra("loadType")) {
+                loadType = PhotoVideoDir.Type.valueOf(getIntent().getStringExtra("loadType"));
+            }
+        }else{
+            Toast.makeText(this, "暂无数据", Toast.LENGTH_SHORT).show();
         }
-    }
 
+    }
     /**
      * 判断类型为图像
      */
@@ -169,6 +171,7 @@ public class PhotoMediaActivity extends AppCompatActivity {
     private boolean isVedioType(){
         return loadType== PhotoVideoDir.Type.VEDIO;
     }
+
 
     /**
      * 开启一个子线程加载下拉框图片列表
@@ -364,7 +367,6 @@ public class PhotoMediaActivity extends AppCompatActivity {
         ArrayList<String> paths = new ArrayList<String>();
         for (String name : dirMap.keySet()) {
             paths.addAll(dirMap.get(name).selectedFiles);
-
         }
         return paths;
     }
@@ -484,27 +486,45 @@ public class PhotoMediaActivity extends AppCompatActivity {
             Intent intent = new Intent();
             if(loadType== PhotoVideoDir.Type.IMAGE){
                 for (int i=0;i<getSelectedPicture().size();i++){
-                    String targetPath = Environment.getExternalStorageDirectory()+"/Temp/compressPic"+i+".jpg";
-                    File f=new File(targetPath);
+                    String lastPath = Environment.getExternalStorageDirectory()+"/Temp/image/compressPic"+i+".jpg";
+                    File f=new File(lastPath);
                     if(!f.exists()){
                         f.mkdir();
                     }
-                    final String compressImage = PictureUtil.compressImage(getSelectedPicture().get(i), targetPath, 30);
+                    final String compressImage = PictureUtil.compressImage(getSelectedPicture().get(i), lastPath, 30);
                     final File compressedPic = new File(compressImage);
-                    files.add(compressedPic);
+                    picFiles.add(compressedPic);
                 }
                 //传入图片选择路径的集合
-                intent.putExtra("files", files);
+                intent.putExtra("files", picFiles);
+
             }else if(loadType== PhotoVideoDir.Type.VEDIO){
-                //传入视频选择路径的集合
-                intent.putExtra("pickerPaths", getSelectedPicture());
+                for (int i=0;i<getSelectedPicture().size();i++){
+                    final File file = new File(getSelectedPicture().get(i));
+                    vedioFiles.add(file);
+                }
+                //传入图片选择路径的集合
+                intent.putExtra("vediopath",getSelectedPicture());
             }
             //返回成功给DemoActivity界面
             setResult(RESULT_OK, intent);
             finish();
         }
     }
-
+    /**
+     * 获取文件的大小
+     * @param path
+     * @return
+     */
+    private String getFileSize(String path) {
+        File f = new File(path);
+        if (!f.exists()) {
+            return "0 MB";
+        } else {
+            long size = f.length();
+            return (size / 1024f) / 1024f + "MB";
+        }
+    }
     /**
      * 取消按钮
      * @param view
